@@ -12,13 +12,13 @@ const login = async (req, res) => {
             const user =  await Users.findOne(userDetails);
             if(user){
                 const userToken = jwt.sign({user}, myTokeKey, {expiresIn: "180m"} );
-                res.status(201).json({
+                res.status(200).json({
                     message: "User is found ",
                     data: user,
                     token: userToken
                 });
             } else {
-                res.status(201).json({
+                res.status(200).json({
                     message: "User Not found ",
                     data: user
                 });

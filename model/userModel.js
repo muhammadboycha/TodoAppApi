@@ -2,15 +2,21 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    name:{
-        type: String, 
-        required: [true,"Name is required."]
+    name: {
+        type: String,
+        required: [true, "Name is required."],
+        validate: {
+            validator: function(value) {
+                return typeof value === 'string';
+            },
+            message: "Name must be a string."
+        }
     },
-    mobile:{
-        type: Number, 
-        unnique:true, 
-        required: [true,"Mobile Number is required."]
-    },
+    mobile: {
+        type: Number,
+        unique: true,
+        required: [true, "Mobile Number is required."],
+    }
 });
 const Users = mongoose.model('users', userSchema);
 //users == collection / table

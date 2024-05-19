@@ -12,7 +12,7 @@ const getAllTask = async (req, res) => {
             const userData = JSON.parse(JSON.stringify(decoded))
             const userId = userData.user._id;
             const result = await Task.find({userId: userId});
-            res.status(201).json({
+            res.status(200).json({
                 message: "Successfully created!",
                 data: result
             });
