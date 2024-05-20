@@ -13,6 +13,7 @@ const statusUpdate = require('./controller/taskController/taskStatusUpdateContro
 const taskStart = require('./controller/taskController/taskStartController');
 const taskCompleted = require('./controller/taskController/taskCompletedController');
 const deleteTask = require('./controller/taskController/deleteTaskController');
+const authenticateToken = require('./auth');
 
 const app = express();
 
@@ -27,20 +28,15 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.post('/createUser',createUser);
 app.post('/login',login);
-app.post('/createTask', createTask);
-app.get('/getAllTask', getAllTask);
-app.post('/getAllTaskByStatus', getAllTaskByStatus);
-app.post('/getTaskById', getTaskById);
-app.post('/updateTask', updateTask);
-app.post('/statusUpdate', statusUpdate);
-app.post('/taskStart', taskStart);
-app.post('/taskCompleted', taskCompleted);
-app.post('/deleteTask', deleteTask);
-
-
-
-
-
+app.post('/createTask', authenticateToken, createTask);
+app.get('/getAllTask',authenticateToken,  getAllTask);
+app.post('/getAllTaskByStatus',authenticateToken,  getAllTaskByStatus);
+app.post('/getTaskById',authenticateToken,  getTaskById);
+app.post('/updateTask',authenticateToken,  updateTask);
+app.post('/statusUpdate',authenticateToken,  statusUpdate);
+app.post('/taskStart',authenticateToken,  taskStart);
+app.post('/taskCompleted',authenticateToken,  taskCompleted);
+app.post('/deleteTask',authenticateToken,  deleteTask);
 
 
 app.get('*',(req,res)=>{

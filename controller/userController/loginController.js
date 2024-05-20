@@ -15,7 +15,7 @@ const login = async (req, res) => {
                 res.status(200).json({
                     message: "User is found ",
                     data: user,
-                    token: userToken
+                    token: userToken,
                 });
             } else {
                 res.status(200).json({
