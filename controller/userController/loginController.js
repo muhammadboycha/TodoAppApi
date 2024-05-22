@@ -26,7 +26,6 @@ const login = async (req, res) => {
             
             
         } catch (e) {
-            console.log('E', e);
             res.status(400).json(e)
         }
 }

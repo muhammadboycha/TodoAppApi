@@ -14,6 +14,7 @@ const taskStart = require('./controller/taskController/taskStartController');
 const taskCompleted = require('./controller/taskController/taskCompletedController');
 const deleteTask = require('./controller/taskController/deleteTaskController');
 const authenticateToken = require('./auth');
+const checkUserExistence = require('./helper');
 
 const app = express();
 
@@ -26,7 +27,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 
-app.post('/createUser',createUser);
+app.post('/createUser',checkUserExistence,createUser);
 app.post('/login',login);
 app.post('/createTask', authenticateToken, createTask);
 app.get('/getAllTask',authenticateToken,  getAllTask);
