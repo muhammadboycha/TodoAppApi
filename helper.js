@@ -2,10 +2,10 @@ const { Users } = require("./model/userModel");
 
 const checkUserExistence = async (req, res, next) => {
     try {
-      const { name, mobile } = req.body;
+      const { email, mobile } = req.body;
   
       // Check if the mobile number already exists
-      const userByMobile = await Users.findOne({ mobile });
+      const userByMobile = await Users.findOne({ mobile,email });
       if (userByMobile) {
         return res.status(400).json({ success: false, message: 'Mobile number already exists' });
       }
