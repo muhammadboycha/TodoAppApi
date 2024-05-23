@@ -12,6 +12,10 @@ const userSchema = new Schema({
             message: "Name must be a string."
         }
     },
+    email: {
+        type: String,
+        required: [true, "Email is required."],
+    },
     mobile: {
         type: Number,
         unique: true,

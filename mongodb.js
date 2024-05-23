@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
+const constantData = require('./constant');
 
 const connect = async() => {
-
-  mongoose.connect('mongodb://localhost:27017/TodoApp',).then(()=> {
+   
+  mongoose.connect(constantData.mongoDbServer,constantData.clientOptions).then(()=> {
             console.log("DB Connected !!!")
         })
         .catch(err => {

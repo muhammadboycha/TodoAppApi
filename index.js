@@ -15,6 +15,7 @@ const taskCompleted = require('./controller/taskController/taskCompletedControll
 const deleteTask = require('./controller/taskController/deleteTaskController');
 const authenticateToken = require('./auth');
 const checkUserExistence = require('./helper');
+const forgotPassword = require('./controller/userController/forgotPassword');
 
 const app = express();
 
@@ -38,6 +39,7 @@ app.post('/statusUpdate',authenticateToken,  statusUpdate);
 app.post('/taskStart',authenticateToken,  taskStart);
 app.post('/taskCompleted',authenticateToken,  taskCompleted);
 app.post('/deleteTask',authenticateToken,  deleteTask);
+app.post('/forgotPassword', forgotPassword);
 
 
 app.get('*',(req,res)=>{
